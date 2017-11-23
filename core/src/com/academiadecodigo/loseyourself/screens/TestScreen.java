@@ -4,6 +4,7 @@ import com.academiadecodigo.loseyourself.gameobjects.Player;
 import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.ScreenAdapter;
 import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
 
 /**
  * Created by codecadet on 23/11/17.
@@ -17,8 +18,9 @@ public class TestScreen extends ScreenAdapter {
         super.show();
 
         gameStage = new Stage();
-        this.player = new Player();
+        this.player = new Player(true);
         gameStage.addActor(player);
+        gameStage.addActor(new Player(false));
     }
 
     @Override

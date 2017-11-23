@@ -11,11 +11,13 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 
 public class Player extends Actor {
 
+    private final boolean controlled;
     private SpriteBatch batch;
     private Texture img;
     private Rectangle rectangle;
 
-    public Player() {
+    public Player(boolean controlled) {
+        this.controlled = controlled;
         batch = new SpriteBatch();
         img = new Texture("eminem2.png");
         this.rectangle = new Rectangle();
@@ -27,15 +29,18 @@ public class Player extends Actor {
     }
 
     @Override
+    public void act(float delta) {
+        super.act(delta);
+        if (controlled) {
+
+            teste();
+        }
+    }
+
+    @Override
     public void draw(Batch batch, float parentAlpha) {
         super.draw(batch, parentAlpha);
         batch.draw(img, this.rectangle.x, this.rectangle.y);
-    }
-
-    public void render() {
-
-        teste();
-
     }
 
     private void teste() {

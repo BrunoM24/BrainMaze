@@ -12,32 +12,31 @@ import com.badlogic.gdx.scenes.scene2d.Actor;
 
 public class Player extends Actor {
 
-    private SpriteBatch batch;
     private Rectangle rectangle;
     private int dir = 0;
     private Sprite sprite;
 
     public Player() {
-        batch = new SpriteBatch();
+
         this.sprite = new Sprite(new Texture("eminem.png"));
         this.rectangle = new Rectangle();
         this.rectangle.x = 0;
         this.rectangle.y = 0;
+        this.rectangle.width = this.sprite.getWidth();
+        this.rectangle.height = this.sprite.getHeight();
+    }
+
+    @Override
+    public void act(float delta) {
+        super.act(delta);
+
+        inputHandler();
     }
 
     @Override
     public void draw(Batch batch, float parentAlpha) {
         super.draw(batch, parentAlpha);
-        this.rectangle.width = this.sprite.getWidth();
-        this.rectangle.height = this.sprite.getHeight();
-    }
-
-    public void render() {
-        inputHandler();
-        this.batch.begin();
         sprite.draw(batch);
-        this.batch.end();
-
     }
 
     private void inputHandler() {
@@ -67,12 +66,12 @@ public class Player extends Actor {
 
     public float getX() {
 
-        return rectangle.getX();
+        return sprite.getX();
     }
 
     public float getY() {
 
-        return rectangle.getY();
+        return sprite.getY();
     }
 
     private void move() {

@@ -7,7 +7,9 @@ import com.badlogic.gdx.graphics.g2d.Sprite;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
 
+
 public class Player {
+
 
     private SpriteBatch batch;
     private Rectangle rectangle;
@@ -35,41 +37,42 @@ public class Player {
     }
 
     private void inputHandler() {
-        if(Gdx.input.isKeyPressed(Input.Keys.UP)){
+        if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
             move();
             return;
         }
 
-        if(Gdx.input.isKeyJustPressed(Input.Keys.LEFT)){
+        if (Gdx.input.isKeyJustPressed(Input.Keys.LEFT)) {
             this.sprite.rotate(90);
-            if(this.dir == 0){
+            if (this.dir == 0) {
                 this.dir = 3;
-            }else {
+            } else {
                 this.dir--;
             }
 
-        }else if(Gdx.input.isKeyJustPressed(Input.Keys.RIGHT)){
+        } else if (Gdx.input.isKeyJustPressed(Input.Keys.RIGHT)) {
             this.sprite.rotate(-90);
-            if(this.dir == 3){
+            if (this.dir == 3) {
                 this.dir = 0;
-            }else {
+            } else {
                 this.dir++;
             }
         }
     }
 
     private void move() {
-        if(dir == 0){
+        if (dir == 0) {
             this.sprite.setY(this.sprite.getY() + 200 * Gdx.graphics.getDeltaTime());
         }
-        if(dir == 1){
+        if (dir == 1) {
             this.sprite.setX(this.sprite.getX() + 200 * Gdx.graphics.getDeltaTime());
         }
-        if(dir == 2){
+        if (dir == 2) {
             this.sprite.setY(this.sprite.getY() - 200 * Gdx.graphics.getDeltaTime());
         }
-        if(dir == 3){
+        if (dir == 3) {
             this.sprite.setX(this.sprite.getX() - 200 * Gdx.graphics.getDeltaTime());
         }
+
     }
 }

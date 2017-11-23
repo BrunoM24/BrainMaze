@@ -1,4 +1,5 @@
 package com.academiadecodigo.loseyourself.stages;
 
-public class Stage {
+public class Stage implements {
+
 }

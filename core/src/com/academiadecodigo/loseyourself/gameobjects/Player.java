@@ -3,12 +3,13 @@ package com.academiadecodigo.loseyourself.gameobjects;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.Batch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.Rectangle;
+import com.badlogic.gdx.scenes.scene2d.Actor;
 
 
-public class Player {
-
+public class Player extends Actor {
 
     private SpriteBatch batch;
     private Texture img;
@@ -22,15 +23,19 @@ public class Player {
         this.rectangle.y = 0;
         this.rectangle.width = this.img.getWidth();
         this.rectangle.height = this.img.getHeight();
+
+    }
+
+    @Override
+    public void draw(Batch batch, float parentAlpha) {
+        super.draw(batch, parentAlpha);
+        batch.draw(img, this.rectangle.x, this.rectangle.y);
     }
 
     public void render() {
 
         teste();
 
-        this.batch.begin();
-        this.batch.draw(img, this.rectangle.x, this.rectangle.y);
-        this.batch.end();
     }
 
     private void teste() {
@@ -40,5 +45,14 @@ public class Player {
         if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) this.rectangle.y -= 200 * Gdx.graphics.getDeltaTime();
     }
 
+    public float getX() {
+
+        return rectangle.getX();
+    }
+
+    public float getY() {
+
+        return rectangle.getY();
+    }
 }
 

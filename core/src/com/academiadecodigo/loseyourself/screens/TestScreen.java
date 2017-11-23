@@ -25,12 +25,10 @@ public class TestScreen extends ScreenAdapter {
 
     @Override
     public void render(float delta) {
-
         super.render(delta);
 
         gameStage.act();
         gameStage.getCamera().position.set(player.getX(), player.getY(), 0);
-
         gameStage.draw();
     }
 }

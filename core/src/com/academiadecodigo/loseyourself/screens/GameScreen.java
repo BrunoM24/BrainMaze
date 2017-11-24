@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
+import com.badlogic.gdx.maps.Map;
 import com.badlogic.gdx.maps.MapObject;
 import com.badlogic.gdx.maps.MapObjects;
 import com.badlogic.gdx.maps.objects.RectangleMapObject;
@@ -44,11 +45,15 @@ public class GameScreen extends ScreenAdapter {
     private ShapeRenderer shapeRenderer;
 
 
+    private MapObjects powerUps;
     private boolean doorFlag;
 
 
     public GameScreen(BrainMaze game) {
         this.game = game;
+        map = new TiledMap();
+        powerUps = map.getLayers().get("ducksLayer").getObjects();
+
     }
 
     @Override
@@ -67,6 +72,7 @@ public class GameScreen extends ScreenAdapter {
         Sounds.start();
         timer();
         doorTimer();
+
 
         for (MapObject object : map.getLayers().get("ObjectLayer1").getObjects()) {
             if (object.getName() == null) {
@@ -173,7 +179,7 @@ public class GameScreen extends ScreenAdapter {
     }
 
     private void checkForPowerUp() {
-        MapObjects powerUps = map.getLayers().get("ObjectLayer2").getObjects();
+
         for (MapObject mapObject : powerUps) {
             if (!mapObject.isVisible()) {
                 continue;

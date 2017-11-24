@@ -3,6 +3,7 @@ package com.academiadecodigo.loseyourself;
 import com.academiadecodigo.loseyourself.screens.GameOverScreen;
 import com.academiadecodigo.loseyourself.screens.GameScreen;
 import com.academiadecodigo.loseyourself.screens.StartScreen;
+import com.academiadecodigo.loseyourself.screens.TestScreen;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
@@ -21,6 +22,7 @@ public class BrainMaze extends Game {
         statusScreen = new StartScreen();
         setScreen(statusScreen);
 
+        //new TestScreen();
     }
 
     @Override

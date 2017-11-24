@@ -20,8 +20,15 @@ public class GameOverScreen implements Screen {
 
         gameOverTexture = new Texture("thumbnail_over640x480.jpg");
         gameOver = new Stage();
+
         spriteBatch = new SpriteBatch();
 
+        spriteBatch.begin();
+        //  spriteBatch.draw(new Texture(Gdx.files.internal("over2.png")), -50, -50);
+
+        spriteBatch.draw(gameOverTexture, 0, 0, 640, 520);
+
+        spriteBatch.flush();
     }
 
 

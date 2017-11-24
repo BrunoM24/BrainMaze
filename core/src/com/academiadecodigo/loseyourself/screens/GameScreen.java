@@ -28,7 +28,7 @@ public class GameScreen extends ScreenAdapter {
     private Player player;
     private Stage gameStage;
     private Stage guiStage;
-    private int timerCountDown = 5;
+    private int timerCountDown = 120;
     private Label name;
     private Label counter;
     private boolean gameOver;
@@ -40,6 +40,7 @@ public class GameScreen extends ScreenAdapter {
     @Override
     public void show() {
         super.show();
+
         Gdx.gl.glClearColor(0, 0, 0, 1);
 
         gameStage = new Stage();

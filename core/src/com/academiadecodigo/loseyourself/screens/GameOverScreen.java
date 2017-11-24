@@ -19,7 +19,8 @@ import com.sun.prism.image.ViewPort;
 /**
  * Created by codecadet on 24/11/17.
  */
-public class GameOverScreen extends Actor implements Screen {
+
+public class GameOverScreen implements Screen {
 
     private Stage gameOver;
     private Sprite endSprite;

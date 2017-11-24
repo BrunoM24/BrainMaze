@@ -1,56 +1,28 @@
 package com.academiadecodigo.loseyourself;
 
-import com.academiadecodigo.loseyourself.screens.GameOverScreen;
-import com.academiadecodigo.loseyourself.screens.GameScreen;
 import com.academiadecodigo.loseyourself.screens.StartScreen;
-import com.academiadecodigo.loseyourself.screens.TestScreen;
 import com.badlogic.gdx.Game;
-import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.Input;
-import com.badlogic.gdx.Screen;
-import com.badlogic.gdx.graphics.*;
+import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
 
 public class BrainMaze extends Game {
 
-    Screen statusScreen;
+    public SpriteBatch batch;
 
     @Override
     public void create() {
-        setScreen(statusScreen = new StartScreen());
-
-        //new TestScreen();
+        batch = new SpriteBatch();
+        setScreen(new StartScreen(this));
     }
 
     @Override
     public void render() {
-
-        Gdx.gl.glClearColor(0, 0, 0, 1);
-        Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-
         super.render();
-
-        if (statusScreen instanceof GameScreen && ((GameScreen) statusScreen).isGameOver()) {
-            setScreen(new GameOverScreen());
-        }
-
-        startingGame();
     }
-
-
-
 
     @Override
     public void dispose() {
         super.dispose();
-    }
-
-
-    public void startingGame() {
-        if (Gdx.input.isButtonPressed(Input.Buttons.LEFT)) {
-            statusScreen = new GameScreen();
-            setScreen(statusScreen);
-        }
     }
 
 }

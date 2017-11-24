@@ -13,13 +13,14 @@ import com.badlogic.gdx.utils.Timer;
 /**
  * Created by codecadet on 23/11/17.
  */
-public class TestScreen extends ScreenAdapter {
+public class GameScreen extends ScreenAdapter {
     private Player player;
     private Stage gameStage;
     private Stage guiStage;
-    private int timerCountDown = 10;
+    private int timerCountDown = 5;
     private Label name;
     private Label counter;
+    private boolean gameOver;
 
     @Override
     public void show() {
@@ -67,6 +68,8 @@ public class TestScreen extends ScreenAdapter {
     }
 
     private void timer() {
+
+
         final Timer timer = new Timer();
         timer.scheduleTask(new Timer.Task() {
 
@@ -75,6 +78,7 @@ public class TestScreen extends ScreenAdapter {
 
                 if (timerCountDown == 0) {
                     timer.stop();
+                    gameOver = true;
                     return;
                 }
 
@@ -86,5 +90,7 @@ public class TestScreen extends ScreenAdapter {
 
     }
 
-
+    public boolean isGameOver() {
+        return gameOver;
+    }
 }

@@ -105,6 +105,10 @@ public class Player extends Actor {
 
             if(object instanceof RectangleMapObject) {
 
+                if(!object.isVisible()){
+                    continue;
+                }
+
                 Rectangle rectangle = ((RectangleMapObject) object).getRectangle();
                 if(Intersector.overlaps(rectangle, new Rectangle(this.sprite.getX() + x * Gdx.graphics.getDeltaTime(), this.sprite.getY() + y * Gdx.graphics.getDeltaTime(), this.sprite.getWidth(), this.sprite.getHeight()))){
                     return;

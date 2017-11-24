@@ -592,26 +592,26 @@
   <object id="459" x="464" y="534.5" width="15" height="411.5"/>
   <object id="461" x="1399.33" y="1628" width="92.6667" height="16"/>
   <object id="462" x="1400" y="1644.67" width="16.6667" height="151.333"/>
+  <object id="465" x="1404.67" y="610.667" height="0.666667"/>
   <object id="463" name="door1" x="1320.91" y="265.091" width="79.8182" height="13.2727"/>
   <object id="464" name="door2" x="1406.33" y="435" width="79.6667" height="14.6667"/>
-  <object id="465" x="1404.67" y="610.667" height="0.666667"/>
-  <object id="466" name="door3" x="1161" y="358.75" width="69" height="16.5"/>
-  <object id="467" name="door4" x="1399.5" y="789.5" width="15.5" height="71"/>
-  <object id="468" name="door5" x="735.667" y="945" width="67.6667" height="14.3333"/>
-  <object id="469" name="door6" x="994.333" y="1715" width="62" height="11.6667"/>
-  <object id="471" name="door7" x="819.75" y="360" width="68.25" height="15"/>
-  <object id="475" name="door8" x="990" y="530.333" width="69.3333" height="15.6667"/>
-  <object id="476" name="door9" x="1230" y="878.333" width="15" height="67"/>
-  <object id="477" name="door10" x="1315.09" y="1045.27" width="15.8182" height="70.1818"/>
-  <object id="481" name="door11" x="1156" y="603.5" width="69.75" height="16"/>
-  <object id="482" name="door12" x="904.364" y="1199.82" width="70.7273" height="15.8182"/>
-  <object id="483" name="door13" x="980.333" y="1455.33" width="78.6667" height="14.3333"/>
-  <object id="484" name="door14" x="1494.33" y="1540.67" width="72.6667" height="17.3333"/>
-  <object id="485" name="door15" x="565" y="1285" width="76.25" height="14.5"/>
-  <object id="486" name="door16" x="635.5" y="1474.5" width="16" height="66.5"/>
-  <object id="487" name="door17" x="1060.25" y="791.25" width="15.75" height="69.5"/>
-  <object id="488" name="door19" x="1074.67" y="1371" width="69.6667" height="15.6667"/>
-  <object id="489" name="door20" x="564" y="616" width="70" height="15.5"/>
+  <object id="466" name="door1" x="1161" y="358.75" width="69" height="16.5"/>
+  <object id="467" name="door2" x="1399.5" y="789.5" width="15.5" height="71"/>
+  <object id="468" name="door1" x="735.667" y="945" width="67.6667" height="14.3333"/>
+  <object id="469" name="door2" x="994.333" y="1715" width="62" height="11.6667"/>
+  <object id="471" name="door1" x="819.75" y="360" width="68.25" height="15"/>
+  <object id="475" name="door2" x="990" y="530.333" width="69.3333" height="15.6667"/>
+  <object id="476" name="door1" x="1230" y="878.333" width="15" height="67"/>
+  <object id="477" name="door2" x="1315.09" y="1045.27" width="15.8182" height="70.1818"/>
+  <object id="481" name="door1" x="1156" y="603.5" width="69.75" height="16"/>
+  <object id="482" name="door2" x="904.364" y="1199.82" width="70.7273" height="15.8182"/>
+  <object id="483" name="door1" x="980.333" y="1455.33" width="78.6667" height="14.3333"/>
+  <object id="484" name="door2" x="1494.33" y="1540.67" width="72.6667" height="17.3333"/>
+  <object id="485" name="door1" x="565" y="1285" width="76.25" height="14.5"/>
+  <object id="486" name="door2" x="635.5" y="1474.5" width="16" height="66.5"/>
+  <object id="487" name="door1" x="1060.25" y="791.25" width="15.75" height="69.5"/>
+  <object id="488" name="door2" x="1074.67" y="1371" width="69.6667" height="15.6667"/>
+  <object id="489" name="door1" x="564" y="616" width="70" height="15.5"/>
   <object id="491" name="door2" x="1671" y="775" width="70.75" height="14.25"/>
  </objectgroup>
  <layer name="ducksLayer" width="400" height="400">

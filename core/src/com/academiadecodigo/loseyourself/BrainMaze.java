@@ -2,19 +2,24 @@ package com.academiadecodigo.loseyourself;
 
 import com.academiadecodigo.loseyourself.screens.GameOverScreen;
 import com.academiadecodigo.loseyourself.screens.GameScreen;
+import com.academiadecodigo.loseyourself.screens.StartScreen;
+import com.academiadecodigo.loseyourself.screens.TestScreen;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
+import com.badlogic.gdx.Input;
+import com.badlogic.gdx.Screen;
 import com.badlogic.gdx.graphics.*;
 
 
 public class BrainMaze extends Game {
 
-    GameScreen gameScreen;
+    Screen statusScreen;
 
     @Override
     public void create() {
-        setScreen(gameScreen = new GameScreen());
+        setScreen(statusScreen = new StartScreen());
 
+        //new TestScreen();
     }
 
     @Override
@@ -25,11 +30,14 @@ public class BrainMaze extends Game {
 
         super.render();
 
-        if (gameScreen.isGameOver()) {
+        if (statusScreen instanceof GameScreen && ((GameScreen) statusScreen).isGameOver()) {
             setScreen(new GameOverScreen());
         }
 
+        startingGame();
     }
+
+
 
 
     @Override
@@ -37,5 +45,12 @@ public class BrainMaze extends Game {
         super.dispose();
     }
 
+
+    public void startingGame() {
+        if (Gdx.input.isButtonPressed(Input.Buttons.LEFT)) {
+            statusScreen = new TestScreen();
+            setScreen(statusScreen);
+        }
+    }
 
 }

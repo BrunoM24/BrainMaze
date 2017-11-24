@@ -16,7 +16,6 @@ public class GameOverScreen implements Screen {
     public void show() {
 
         gameOver = new Stage();
-        gameOver.addActor(new Label());
 
     }
 

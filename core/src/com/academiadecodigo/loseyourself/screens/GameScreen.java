@@ -33,8 +33,6 @@ public class GameScreen extends ScreenAdapter {
 
         gameStage = new Stage();
         guiStage = new Stage();
-        this.player = new Player(true);
-        gameStage.addActor(player);
 
         guiStage.addActor(name = new Label("Time(seconds)", new Label.LabelStyle(new BitmapFont(), Color.WHITE)));
         guiStage.addActor(counter = new Label(String.format("%03d", timerCountDown), new Label.LabelStyle(new BitmapFont(), Color.WHITE)));

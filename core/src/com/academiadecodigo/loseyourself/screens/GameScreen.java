@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.maps.MapObject;
+import com.badlogic.gdx.maps.MapObjects;
 import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
@@ -30,7 +31,8 @@ public class GameScreen extends ScreenAdapter {
     private Player player;
     private Stage gameStage;
     private Stage guiStage;
-    private int timerCountDown = 5;
+    private Stage background;
+    private int timerCountDown = 60;
     private Label name;
     private Label counter;
     private boolean gameOver;
@@ -51,6 +53,7 @@ public class GameScreen extends ScreenAdapter {
 
         gameStage = new Stage();
         guiStage = new Stage();
+        background = new Stage();
 
         addGameLogic();
         addTimer();
@@ -65,12 +68,12 @@ public class GameScreen extends ScreenAdapter {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         shapeRenderer.setProjectionMatrix(gameStage.getCamera().combined);
-        for(MapObject object : map.getLayers().get(1).getObjects()){
+        for(MapObject object : map.getLayers().get("ObjectLayer1").getObjects()){
             if(object instanceof RectangleMapObject) {
                 Rectangle rectangle = ((RectangleMapObject) object).getRectangle();
 
                 shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
-                shapeRenderer.setColor(Color.BLACK);
+                shapeRenderer.setColor(Color.WHITE);
                 shapeRenderer.rect(rectangle.x, rectangle.y, rectangle.width, rectangle.height);
                 shapeRenderer.end();
             }
@@ -84,6 +87,21 @@ public class GameScreen extends ScreenAdapter {
         render.render();
         gameStage.draw();
         guiStage.draw();
+        drawMov();
+    }
+
+    private void drawMov() {
+        MapObjects mapObjects = map.getLayers().get("ObjectLayer1").getObjects();
+        for (MapObject mapObject : mapObjects){
+            if(mapObject.getName() == null){
+                continue;
+            }
+            Rectangle rectangle = ((RectangleMapObject) mapObject).getRectangle();
+            shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
+            shapeRenderer.setColor(Color.WHITE);
+            shapeRenderer.rect(rectangle.x, rectangle.y, rectangle.width, rectangle.height);
+            shapeRenderer.end();
+        }
     }
 
     @Override

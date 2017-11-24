@@ -23,6 +23,8 @@ public class Player extends Actor {
     public Player(TiledMap map) {
 
         this.sprite = new Sprite(new Texture("eminem.png"));
+        this.sprite.setX(1000);
+        this.sprite.setY(980);
         this.rectangle = new Rectangle();
         this.rectangle.x = 0;
         this.rectangle.y = 0;

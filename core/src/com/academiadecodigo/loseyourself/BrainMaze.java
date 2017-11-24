@@ -16,26 +16,25 @@ public class BrainMaze extends Game {
 
     @Override
     public void create() {
-        setScreen(statusScreen = new StartScreen());
+
+
+        statusScreen = new StartScreen();
+        setScreen(statusScreen);
 
     }
 
     @Override
     public void render() {
 
-        Gdx.gl.glClearColor(0, 0, 0, 1);
+        Gdx.gl.glClearColor(1, 0, 0, 1);
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
-
         super.render();
 
         if (statusScreen instanceof GameScreen && ((GameScreen) statusScreen).isGameOver()) {
-            setScreen(new GameOverScreen());
+         setScreen(new GameOverScreen());
         }
-
         startingGame();
     }
-
-
 
 
     @Override
@@ -49,6 +48,6 @@ public class BrainMaze extends Game {
             statusScreen = new GameScreen();
             setScreen(statusScreen);
         }
-    }
 
+    }
 }

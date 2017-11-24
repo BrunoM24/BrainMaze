@@ -19,46 +19,38 @@ import com.sun.prism.image.ViewPort;
 /**
  * Created by codecadet on 24/11/17.
  */
-public class GameOverScreen extends Actor implements Screen {
+public class GameOverScreen implements Screen {
 
     private Stage gameOver;
     private Sprite endSprite;
     private SpriteBatch spriteBatch;
-
+    Texture texture;
 
     @Override
     public void show() {
 
-        Texture texture = new Texture("over2.png");
+        texture = new Texture("thumbnail_over640x480.jpg");
         gameOver = new Stage();
         spriteBatch = new SpriteBatch();
 
-        spriteBatch.begin();
-        //  spriteBatch.draw(new Texture(Gdx.files.internal("over2.png")), -50, -50);
-
-        spriteBatch.draw(texture, 0, 0, 640, 520);
-        System.out.println(gameOver.getHeight());
-        System.out.println(gameOver.getWidth());
-        spriteBatch.flush();
 
     }
 
 
     @Override
     public void render(float delta) {
+        spriteBatch.begin();
 
+        System.out.println("GameOverScreen.show");
+
+        spriteBatch.draw(texture, 0, 0, 640, 480);
+        spriteBatch.flush();
 
     }
 
     @Override
     public void resize(int width, int height) {
-     /*   Vector2 size = Scaling.fit.apply(800, 700, width, height);
-        int viewportX = (int)(width - size.x) / 2;
-        int viewportY = (int)(height - size.y) / 2;
-        int viewportWidth = (int)size.x;
-        int viewportHeight = (int)size.y;
-        Viewport viewPort = new FitViewport(viewportWidth,viewportHeight);
-        gameOver.setViewport(viewPort);*/
+
     }
 
 

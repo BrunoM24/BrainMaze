@@ -63,7 +63,7 @@ public class GameScreen extends ScreenAdapter {
     @Override
     public void dispose() {
         super.dispose();
-        guiStage.dispose();
+     guiStage.dispose();
         gameStage.dispose();
     }
 

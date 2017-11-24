@@ -118,4 +118,8 @@ public class Player extends Actor {
     public Sprite getSprite() {
         return sprite;
     }
+
+    public Rectangle getRectangle() {
+        return new Rectangle(sprite.getX(), sprite.getY(), sprite.getWidth(), sprite.getHeight());
+    }
 }

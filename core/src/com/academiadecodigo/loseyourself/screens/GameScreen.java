@@ -15,6 +15,7 @@ import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
+import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Rectangle;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 import com.badlogic.gdx.scenes.scene2d.ui.Label;
@@ -41,7 +42,7 @@ public class GameScreen extends ScreenAdapter {
     private OrthogonalTiledMapRenderer render;
     private ShapeRenderer shapeRenderer;
 
-    public GameScreen(BrainMaze game){
+    public GameScreen(BrainMaze game) {
         this.game = game;
     }
 
@@ -68,8 +69,8 @@ public class GameScreen extends ScreenAdapter {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 
         shapeRenderer.setProjectionMatrix(gameStage.getCamera().combined);
-        for(MapObject object : map.getLayers().get("ObjectLayer1").getObjects()){
-            if(object instanceof RectangleMapObject) {
+        for (MapObject object : map.getLayers().get("ObjectLayer1").getObjects()) {
+            if (object instanceof RectangleMapObject) {
                 Rectangle rectangle = ((RectangleMapObject) object).getRectangle();
 
                 shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
@@ -82,6 +83,8 @@ public class GameScreen extends ScreenAdapter {
         gameStage.getCamera().position.set(player.getX(), player.getY(), 0);
         render.setView((OrthographicCamera) this.gameStage.getCamera());
 
+        checkForPowerUp();
+
         gameStage.act();
         guiStage.act();
         render.render();
@@ -92,8 +95,8 @@ public class GameScreen extends ScreenAdapter {
 
     private void drawMov() {
         MapObjects mapObjects = map.getLayers().get("ObjectLayer1").getObjects();
-        for (MapObject mapObject : mapObjects){
-            if(mapObject.getName() == null){
+        for (MapObject mapObject : mapObjects) {
+            if (mapObject.getName() == null) {
                 continue;
             }
             Rectangle rectangle = ((RectangleMapObject) mapObject).getRectangle();
@@ -124,7 +127,7 @@ public class GameScreen extends ScreenAdapter {
 
         gameStage.addActor(player);
 
-        ((OrthographicCamera)gameStage.getCamera()).zoom -= 0.25f;
+        ((OrthographicCamera) gameStage.getCamera()).zoom -= 0.25f;
 
         gameStage.getCamera().position.set(player.getX(), player.getY(), 0);
     }
@@ -143,6 +146,24 @@ public class GameScreen extends ScreenAdapter {
         table.add(counter).expandX().padTop(10);
 
         guiStage.addActor(table);
+    }
+
+    private void checkForPowerUp() {
+        MapObjects powerUps = map.getLayers().get("ObjectLayer2").getObjects();
+        for (MapObject mapObject : powerUps) {
+            if (!mapObject.isVisible()) {
+                continue;
+            }
+            if (mapObject instanceof RectangleMapObject) {
+
+                Rectangle rectangle = ((RectangleMapObject) mapObject).getRectangle();
+                if (Intersector.overlaps(rectangle, player.getRectangle())) {
+                    timerCountDown += 10;
+                    mapObject.setVisible(false);
+                }
+            }
+
+        }
     }
 
     private void timer() {

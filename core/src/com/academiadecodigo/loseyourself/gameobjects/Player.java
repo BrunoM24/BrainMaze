@@ -1,5 +1,6 @@
 package com.academiadecodigo.loseyourself.gameobjects;
 
+import com.academiadecodigo.loseyourself.Sounds.Sounds;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Texture;
@@ -104,6 +105,10 @@ public class Player extends Actor {
 
             if(object instanceof RectangleMapObject) {
 
+                if(!object.isVisible()){
+                    continue;
+                }
+
                 Rectangle rectangle = ((RectangleMapObject) object).getRectangle();
                 if(Intersector.overlaps(rectangle, new Rectangle(this.sprite.getX() + x * Gdx.graphics.getDeltaTime(), this.sprite.getY() + y * Gdx.graphics.getDeltaTime(), this.sprite.getWidth(), this.sprite.getHeight()))){
                     return;
@@ -113,6 +118,7 @@ public class Player extends Actor {
 
         this.sprite.setX(this.sprite.getX() + x * Gdx.graphics.getDeltaTime());
         this.sprite.setY(this.sprite.getY() + y * Gdx.graphics.getDeltaTime());
+        Sounds.move();
     }
 
     public Sprite getSprite() {

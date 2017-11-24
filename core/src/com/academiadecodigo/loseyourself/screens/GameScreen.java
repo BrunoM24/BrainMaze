@@ -1,6 +1,7 @@
 package com.academiadecodigo.loseyourself.screens;
 
 import com.academiadecodigo.loseyourself.BrainMaze;
+import com.academiadecodigo.loseyourself.Sounds.Sounds;
 import com.academiadecodigo.loseyourself.gameobjects.Player;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
@@ -42,6 +43,10 @@ public class GameScreen extends ScreenAdapter {
     private OrthogonalTiledMapRenderer render;
     private ShapeRenderer shapeRenderer;
 
+
+    private boolean doorFlag;
+
+
     public GameScreen(BrainMaze game) {
         this.game = game;
     }
@@ -59,7 +64,19 @@ public class GameScreen extends ScreenAdapter {
         addGameLogic();
         addTimer();
 
+        Sounds.start();
         timer();
+        doorTimer();
+
+        for (MapObject object : map.getLayers().get("ObjectLayer1").getObjects()) {
+            if (object.getName() == null) {
+                continue;
+            }
+
+            if (object.getName().equals("door2")) {
+                object.setVisible(false);
+            }
+        }
     }
 
     @Override
@@ -94,16 +111,23 @@ public class GameScreen extends ScreenAdapter {
     }
 
     private void drawMov() {
+        System.out.println("teste");
         MapObjects mapObjects = map.getLayers().get("ObjectLayer1").getObjects();
         for (MapObject mapObject : mapObjects) {
+
             if (mapObject.getName() == null) {
+
                 continue;
             }
-            Rectangle rectangle = ((RectangleMapObject) mapObject).getRectangle();
-            shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
-            shapeRenderer.setColor(Color.WHITE);
-            shapeRenderer.rect(rectangle.x, rectangle.y, rectangle.width, rectangle.height);
-            shapeRenderer.end();
+
+            if (mapObject instanceof RectangleMapObject && mapObject.isVisible()) {
+                Rectangle rectangle = ((RectangleMapObject) mapObject).getRectangle();
+
+                shapeRenderer.begin(ShapeRenderer.ShapeType.Filled);
+                shapeRenderer.setColor(Color.WHITE);
+                shapeRenderer.rect(rectangle.x, rectangle.y, rectangle.width, rectangle.height);
+                shapeRenderer.end();
+            }
         }
     }
 
@@ -175,6 +199,7 @@ public class GameScreen extends ScreenAdapter {
             public void run() {
 
                 if (timerCountDown == 0) {
+                    Sounds.end();
                     dispose();
                     timer.stop();
                     gameOver = true;
@@ -187,6 +212,28 @@ public class GameScreen extends ScreenAdapter {
 
             }
         }, 1, 1);
+
+    }
+
+    private void doorTimer() {
+
+        final Timer timer = new Timer();
+        timer.scheduleTask(new Timer.Task() {
+
+            @Override
+            public void run() {
+
+                doorFlag = !doorFlag;
+                for (MapObject object : map.getLayers().get("ObjectLayer1").getObjects()) {
+                    if (object.getName() == null) {
+                        continue;
+                    }
+
+                    object.setVisible(!object.isVisible());
+                }
+                return;
+            }
+        }, 1, 5);
 
     }
 

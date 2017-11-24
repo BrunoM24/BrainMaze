@@ -9,13 +9,11 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.maps.MapLayer;
 import com.badlogic.gdx.maps.MapObject;
-import com.badlogic.gdx.maps.MapObjects;
 import com.badlogic.gdx.maps.objects.RectangleMapObject;
 import com.badlogic.gdx.maps.tiled.TiledMap;
 import com.badlogic.gdx.maps.tiled.TmxMapLoader;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Rectangle;
-import com.badlogic.gdx.scenes.scene2d.Actor;
 import com.badlogic.gdx.scenes.scene2d.Stage;
 
 /**
@@ -29,7 +27,6 @@ public class TestScreen extends ScreenAdapter {
     private TmxMapLoader tmxMapLoader;
     private TiledMap map;
     private OrthogonalTiledMapRenderer render;
-    private MapLayer collide;
     private ShapeRenderer shapeRenderer;
 
     @Override
@@ -79,9 +76,6 @@ public class TestScreen extends ScreenAdapter {
         gameStage.act();
         render.render();
         gameStage.draw();
-
-
-
     }
 
     @Override

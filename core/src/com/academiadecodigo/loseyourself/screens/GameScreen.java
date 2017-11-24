@@ -1,6 +1,7 @@
 package com.academiadecodigo.loseyourself.screens;
 
 import com.academiadecodigo.loseyourself.BrainMaze;
+import com.academiadecodigo.loseyourself.Sounds.Sounds;
 import com.academiadecodigo.loseyourself.gameobjects.Player;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
@@ -58,6 +59,7 @@ public class GameScreen extends ScreenAdapter {
         addGameLogic();
         addTimer();
 
+        Sounds.start();
         timer();
     }
 
@@ -154,6 +156,7 @@ public class GameScreen extends ScreenAdapter {
             public void run() {
 
                 if (timerCountDown == 0) {
+                    Sounds.end();
                     dispose();
                     timer.stop();
                     gameOver = true;

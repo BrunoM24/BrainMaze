@@ -1,5 +1,6 @@
 package com.academiadecodigo.loseyourself.gameobjects;
 
+import com.academiadecodigo.loseyourself.Sounds.Sounds;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.Texture;
@@ -113,6 +114,7 @@ public class Player extends Actor {
 
         this.sprite.setX(this.sprite.getX() + x * Gdx.graphics.getDeltaTime());
         this.sprite.setY(this.sprite.getY() + y * Gdx.graphics.getDeltaTime());
+        Sounds.move();
     }
 
     public Sprite getSprite() {

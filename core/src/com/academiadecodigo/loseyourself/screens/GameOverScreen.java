@@ -1,13 +1,22 @@
 package com.academiadecodigo.loseyourself.screens;
 
 import com.badlogic.gdx.Screen;
+import com.badlogic.gdx.scenes.scene2d.Stage;
+import com.badlogic.gdx.scenes.scene2d.ui.Label;
+
 
 /**
  * Created by codecadet on 24/11/17.
  */
 public class GameOverScreen implements Screen {
+
+    private Stage gameOver;
+
     @Override
     public void show() {
+
+        gameOver = new Stage();
+        gameOver.addActor(new Label());
 
     }
 
@@ -38,6 +47,5 @@ public class GameOverScreen implements Screen {
 
     @Override
     public void dispose() {
-
     }
 }

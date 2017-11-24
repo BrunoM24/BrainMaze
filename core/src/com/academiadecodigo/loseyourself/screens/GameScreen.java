@@ -39,7 +39,7 @@ public class GameScreen extends ScreenAdapter {
         guiStage.addActor(name = new Label("Time(seconds)", new Label.LabelStyle(new BitmapFont(), Color.WHITE)));
         guiStage.addActor(counter = new Label(String.format("%03d", timerCountDown), new Label.LabelStyle(new BitmapFont(), Color.WHITE)));
 
-        table.add(name).expandX().pad(10,400,0,0);
+        table.add(name).expandX().pad(10, 400, 0, 0);
         table.add(counter).expandX().padTop(10);
 
         guiStage.addActor(table);
@@ -77,6 +77,7 @@ public class GameScreen extends ScreenAdapter {
             public void run() {
 
                 if (timerCountDown == 0) {
+                    dispose();
                     timer.stop();
                     gameOver = true;
                     return;

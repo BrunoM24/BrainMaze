@@ -1,5 +1,6 @@
 package com.academiadecodigo.loseyourself.screens;
 
+import com.academiadecodigo.loseyourself.BrainMaze;
 import com.academiadecodigo.loseyourself.gameobjects.Player;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.ScreenAdapter;
@@ -25,10 +26,11 @@ import com.badlogic.gdx.utils.Timer;
 
 public class GameScreen extends ScreenAdapter {
 
+    private BrainMaze game;
     private Player player;
     private Stage gameStage;
     private Stage guiStage;
-    private int timerCountDown = 120;
+    private int timerCountDown = 5;
     private Label name;
     private Label counter;
     private boolean gameOver;
@@ -36,6 +38,10 @@ public class GameScreen extends ScreenAdapter {
     private TiledMap map;
     private OrthogonalTiledMapRenderer render;
     private ShapeRenderer shapeRenderer;
+
+    public GameScreen(BrainMaze game){
+        this.game = game;
+    }
 
     @Override
     public void show() {
@@ -83,6 +89,7 @@ public class GameScreen extends ScreenAdapter {
     @Override
     public void dispose() {
         super.dispose();
+        guiStage.dispose();
         gameStage.dispose();
     }
 
@@ -132,6 +139,7 @@ public class GameScreen extends ScreenAdapter {
                     dispose();
                     timer.stop();
                     gameOver = true;
+                    game.setScreen(new GameOverScreen(game));
                     return;
                 }
 

@@ -48,7 +48,7 @@ public class BrainMaze extends Game {
 
     public void startingGame() {
         if (Gdx.input.isButtonPressed(Input.Buttons.LEFT)) {
-            statusScreen = new TestScreen();
+            statusScreen = new GameScreen();
             setScreen(statusScreen);
         }
     }
